@@ -1,5 +1,10 @@
 :root {
   --font: 'Nunito Sans', sans-serif;
+  --dark-bg: hsl(207, 26%, 17%);
+  --light-bg: hsl(0, 0%, 98%);
+  --light-text-color: hsl(200, 15%, 8%);
+  --dark-mode-elements: hsl(209, 23%, 22%);
+  --white: hsl(0, 0%, 100%);
 }
 
 body {
@@ -7,4 +12,17 @@ body {
   padding: 0;
   box-sizing: border-box;
   font-family: var(--font);
+}
+
+.dark-bg {
+  background-color: var(--dark-mode-elements);
+  color: var(--white);
+}
+
+.light-bg {
+  background-color: var(--light-bg);
+}
+
+.App {
+  border: 1px sold red;
 }
