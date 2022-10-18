@@ -5,6 +5,7 @@
   --light-text-color: hsl(200, 15%, 8%);
   --dark-mode-elements: hsl(209, 23%, 22%);
   --white: hsl(0, 0%, 100%);
+  --light-mode-input-color: hsl(0, 0%, 52%);
 }
 
 body {
@@ -12,17 +13,4 @@ body {
   padding: 0;
   box-sizing: border-box;
   font-family: var(--font);
-}
-
-.dark-bg {
-  background-color: var(--dark-mode-elements);
-  color: var(--white);
-}
-
-.light-bg {
-  background-color: var(--light-bg);
-}
-
-.App {
-  border: 1px sold red;
 }
