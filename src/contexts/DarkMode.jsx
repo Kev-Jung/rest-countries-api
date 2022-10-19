@@ -15,6 +15,7 @@ export const DarkModeContextProvider = ({ children }) => {
       text: "hsl(200, 15%, 8%)",
       elements: "hsl(0, 0%, 100%)",
       inputColor: "hsl(0, 0%, 52%)",
+      shadow: "0 1px 3px 3px rgba(0, 0, 0, 0.05)",
     },
     dark: {
       bg: "hsl(207, 26%, 17%)",

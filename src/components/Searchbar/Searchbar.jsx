@@ -1,13 +1,9 @@
 import "./Searchbar.scss";
-import { useContext, useState } from "react";
+import { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
-import { DarkModeContext } from "../../contexts/DarkMode";
 
-const Searchbar = ({ placeholder }) => {
-  const { darkMode, light, dark } = useContext(DarkModeContext);
-  const theme = darkMode ? dark : light;
-
+const Searchbar = ({ placeholder, theme }) => {
   const [inputField, setInputField] = useState("");
 
   const handleInputChange = (e) => {
@@ -18,11 +14,16 @@ const Searchbar = ({ placeholder }) => {
     <div
       style={{
         backgroundColor: theme.elements,
+        boxShadow: theme.shadow,
         color: theme.inputColor ? theme.inputColor : theme.text,
       }}
       className="searchbar-container"
     >
-      <FontAwesomeIcon className="search-icon" icon={faMagnifyingGlass} />
+      <FontAwesomeIcon
+        onClick={() => console.log(inputField)}
+        className="search-icon"
+        icon={faMagnifyingGlass}
+      />
       <input
         style={{ backgroundColor: theme.elements, color: theme.text }}
         className="searchbar"

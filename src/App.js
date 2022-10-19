@@ -1,9 +1,9 @@
 import './App.scss';
 import Header from './components/Header/Header';
-import Searchbar from './components/Searchbar/Searchbar';
 import { useContext } from "react";
 import { DarkModeContext } from "./contexts/DarkMode";
-import Filter from './components/Filter/Filter';
+import Query from './components/Query/Query';
+
 
 function App() {
 
@@ -11,10 +11,12 @@ function App() {
   const theme = darkMode ? dark : light;
 
   return (
-    <div style={{backgroundColor: theme.bg}}>
-        <Header />
-        <Searchbar placeholder="Search for a country..." />
-        <Filter />
+    <div 
+      className="App" 
+      style={{backgroundColor: theme.bg}}
+    >
+      <Header />
+      <Query theme={theme} />
     </div>
   );
 }

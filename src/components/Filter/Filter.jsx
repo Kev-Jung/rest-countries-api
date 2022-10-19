@@ -1,9 +1,53 @@
 import "./Filter.scss";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCaretDown } from "@fortawesome/free-solid-svg-icons";
+import { useState } from "react";
 
-const Filter = () => {
+const Filter = ({ theme, placeholder, menuItems }) => {
+  const [menuItem, setMenuItem] = useState(placeholder);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const handleToggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
+
+  const handleSelectMenuItem = (item) => {
+    setMenuItem(item);
+    setIsMenuOpen(!isMenuOpen);
+  };
+
   return (
-    <div>
-      <form></form>
+    <div className="dropdown-menu-container">
+      <div
+        className="dropdown-menu-filter"
+        style={{
+          backgroundColor: theme.elements,
+          color: theme.text,
+          boxShadow: theme.shadow,
+        }}
+      >
+        <span>{menuItem}</span>
+        <FontAwesomeIcon
+          onClick={handleToggleMenu}
+          className={`arrow ${isMenuOpen ? "toggle-arrow" : ""}`}
+          icon={faCaretDown}
+        />
+      </div>
+      <ul
+        className="menu-item-container"
+        style={{
+          backgroundColor: theme.elements,
+          color: theme.text,
+          boxShadow: theme.shadow,
+          visibility: `${isMenuOpen ? "visible" : "hidden"}`,
+        }}
+      >
+        {menuItems.map((item, index) => (
+          <li onClick={() => handleSelectMenuItem(item)} key={index}>
+            {item}
+          </li>
+        ))}
+      </ul>
     </div>
   );
 };

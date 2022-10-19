@@ -1,0 +1,9 @@
+.query-container {
+  margin-inline: var(--mobile-inline);
+  position: relative;
+  border: 1px solid red;
+
+  @media (min-width: 1024px) {
+    margin-inline: var(--desktop-inline);
+  }
+}
