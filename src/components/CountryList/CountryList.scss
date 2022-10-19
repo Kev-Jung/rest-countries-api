@@ -1,0 +1,30 @@
+.country-list-container {
+  display: flex;
+  flex-direction: column;
+  gap: 60px;
+  padding-bottom: 60px;
+
+  @media (min-width: 768px) {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  @media (min-width: 1024px) {
+    margin-inline: var(--desktop-inline);
+  }
+
+  .loading-container {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 20px;
+  }
+
+  .loading-text {
+    font-size: 20px;
+  }
+}

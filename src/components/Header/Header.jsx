@@ -2,21 +2,20 @@ import "./Header.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMoon } from "@fortawesome/free-solid-svg-icons";
 import { useContext } from "react";
-import { DarkModeContext } from "../../contexts/DarkMode";
+import { ThemeContext } from "../../contexts/ThemeContext";
 
-const Header = () => {
-  const { darkMode, toggleDarkMode, light, dark } = useContext(DarkModeContext);
-  const theme = darkMode ? dark : light;
+const Header = ({ themeState }) => {
+  const { theme, toggleTheme } = useContext(ThemeContext);
 
   return (
     <header
-      style={{ backgroundColor: theme.elements, color: theme.text }}
+      style={{ backgroundColor: themeState.elements, color: themeState.text }}
       className="header-container"
     >
       <span className="header-title">Where in the world?</span>
-      <div className="dark-mode-container" onClick={toggleDarkMode}>
+      <div className="dark-mode-container" onClick={toggleTheme}>
         <FontAwesomeIcon icon={faMoon} />
-        <span>{darkMode ? "Light Mode" : "Dark Mode"}</span>
+        <span>{theme ? "Light Mode" : "Dark Mode"}</span>
       </div>
     </header>
   );

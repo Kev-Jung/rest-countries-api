@@ -1,15 +1,18 @@
 import { createContext, useState } from "react";
 
-export const DarkModeContext = createContext();
+export const ThemeContext = createContext({
+  theme: false,
+  setTheme: () => {},
+});
 
-export const DarkModeContextProvider = ({ children }) => {
-  const [darkMode, setDarkMode] = useState(false);
+export const ThemeContextProvider = ({ children }) => {
+  const [theme, setTheme] = useState(false);
 
-  const toggleDarkMode = () => {
-    setDarkMode(!darkMode);
+  const toggleTheme = () => {
+    setTheme(!theme);
   };
 
-  const themeState = {
+  const themeStyles = {
     light: {
       bg: "hsl(0, 0%, 98%)",
       text: "hsl(200, 15%, 8%)",
@@ -24,11 +27,9 @@ export const DarkModeContextProvider = ({ children }) => {
     },
   };
 
-  const value = { darkMode, toggleDarkMode, ...themeState };
+  const value = { theme, toggleTheme, ...themeStyles };
 
   return (
-    <DarkModeContext.Provider value={value}>
-      {children}
-    </DarkModeContext.Provider>
+    <ThemeContext.Provider value={value}>{children}</ThemeContext.Provider>
   );
 };

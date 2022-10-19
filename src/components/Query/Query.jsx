@@ -2,12 +2,15 @@ import "./Query.scss";
 import Searchbar from "../Searchbar/Searchbar";
 import Filter from "../Filter/Filter";
 
-const Query = ({ theme }) => {
+const Query = ({ themeState }) => {
   return (
     <div className="query-container">
-      <Searchbar placeholder="Search for a country..." theme={theme} />
+      <Searchbar
+        placeholder="Search for a country..."
+        themeState={themeState}
+      />
       <Filter
-        theme={theme}
+        themeState={themeState}
         placeholder="Filter by Region"
         menuItems={["Africa", "America", "Asia", "Europe", "Oceania"]}
       />

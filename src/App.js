@@ -1,22 +1,24 @@
 import './App.scss';
 import Header from './components/Header/Header';
 import { useContext } from "react";
-import { DarkModeContext } from "./contexts/DarkMode";
+import { ThemeContext } from './contexts/ThemeContext';
 import Query from './components/Query/Query';
+import CountryList from './components/CountryList/CountryList';
 
 
 function App() {
 
-  const { darkMode, light, dark } = useContext(DarkModeContext);
-  const theme = darkMode ? dark : light;
+  const { theme, light, dark } = useContext(ThemeContext);
+  const themeState = theme ? dark : light;
 
   return (
     <div 
       className="App" 
-      style={{backgroundColor: theme.bg}}
+      style={{backgroundColor: themeState.bg}}
     >
-      <Header />
-      <Query theme={theme} />
+      <Header themeState={themeState}/>
+      <Query themeState={themeState} />
+      <CountryList themeState={themeState} />
     </div>
   );
 }

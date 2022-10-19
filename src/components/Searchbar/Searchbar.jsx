@@ -3,7 +3,7 @@ import { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 
-const Searchbar = ({ placeholder, theme }) => {
+const Searchbar = ({ placeholder, themeState }) => {
   const [inputField, setInputField] = useState("");
 
   const handleInputChange = (e) => {
@@ -13,9 +13,9 @@ const Searchbar = ({ placeholder, theme }) => {
   return (
     <div
       style={{
-        backgroundColor: theme.elements,
-        boxShadow: theme.shadow,
-        color: theme.inputColor ? theme.inputColor : theme.text,
+        backgroundColor: themeState.elements,
+        boxShadow: themeState.shadow,
+        color: themeState.inputColor ? themeState.inputColor : themeState.text,
       }}
       className="searchbar-container"
     >
@@ -25,7 +25,7 @@ const Searchbar = ({ placeholder, theme }) => {
         icon={faMagnifyingGlass}
       />
       <input
-        style={{ backgroundColor: theme.elements, color: theme.text }}
+        style={{ backgroundColor: themeState.elements, color: themeState.text }}
         className="searchbar"
         type="text"
         placeholder={placeholder}

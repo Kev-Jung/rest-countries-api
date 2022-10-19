@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCaretDown } from "@fortawesome/free-solid-svg-icons";
 import { useState } from "react";
 
-const Filter = ({ theme, placeholder, menuItems }) => {
+const Filter = ({ themeState, placeholder, menuItems }) => {
   const [menuItem, setMenuItem] = useState(placeholder);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
@@ -21,9 +21,9 @@ const Filter = ({ theme, placeholder, menuItems }) => {
       <div
         className="dropdown-menu-filter"
         style={{
-          backgroundColor: theme.elements,
-          color: theme.text,
-          boxShadow: theme.shadow,
+          backgroundColor: themeState.elements,
+          color: themeState.text,
+          boxShadow: themeState.shadow,
         }}
       >
         <span>{menuItem}</span>
@@ -36,9 +36,9 @@ const Filter = ({ theme, placeholder, menuItems }) => {
       <ul
         className="menu-item-container"
         style={{
-          backgroundColor: theme.elements,
-          color: theme.text,
-          boxShadow: theme.shadow,
+          backgroundColor: themeState.elements,
+          color: themeState.text,
+          boxShadow: themeState.shadow,
           visibility: `${isMenuOpen ? "visible" : "hidden"}`,
         }}
       >
