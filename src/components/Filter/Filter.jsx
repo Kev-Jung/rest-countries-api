@@ -1,9 +1,11 @@
 import "./Filter.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCaretDown } from "@fortawesome/free-solid-svg-icons";
-import { useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import { CountryContext } from "../../contexts/CountryContext";
 
 const Filter = ({ themeState, placeholder, menuItems }) => {
+  const { setFilteredCountries } = useContext(CountryContext);
   const [menuItem, setMenuItem] = useState(placeholder);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
@@ -15,6 +17,21 @@ const Filter = ({ themeState, placeholder, menuItems }) => {
     setMenuItem(item);
     setIsMenuOpen(!isMenuOpen);
   };
+
+  const fetchByCountryName = async () => {
+    const response = await fetch(
+      `https://restcountries.com/v3.1/region/${menuItem}`
+    );
+    const countryData = await response.json();
+    setFilteredCountries(countryData);
+    setMenuItem(placeholder);
+  };
+
+  useEffect(() => {
+    if (menuItem !== placeholder) {
+      fetchByCountryName();
+    }
+  }, [menuItem]);
 
   return (
     <div className="dropdown-menu-container">
