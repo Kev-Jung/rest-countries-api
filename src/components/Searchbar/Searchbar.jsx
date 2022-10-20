@@ -1,10 +1,23 @@
 import "./Searchbar.scss";
-import { useState } from "react";
+import { useEffect, useState, useContext } from "react";
+import { CountryContext } from "../../contexts/CountryContext";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 
 const Searchbar = ({ placeholder, themeState }) => {
+  const { countries, setFilteredCountries } = useContext(CountryContext);
   const [inputField, setInputField] = useState("");
+
+  useEffect(() => {
+    const query = inputField.toLowerCase();
+    setFilteredCountries(
+      // Always filter from original API data so when all searchbar text removed, we have the full dataset to filter again.
+      countries.filter((country) => {
+        const countryName = country.name.common.toLowerCase();
+        return countryName.includes(query);
+      })
+    );
+  }, [inputField]);
 
   const handleInputChange = (e) => {
     setInputField(e.target.value);
@@ -19,11 +32,7 @@ const Searchbar = ({ placeholder, themeState }) => {
       }}
       className="searchbar-container"
     >
-      <FontAwesomeIcon
-        onClick={() => console.log(inputField)}
-        className="search-icon"
-        icon={faMagnifyingGlass}
-      />
+      <FontAwesomeIcon className="search-icon" icon={faMagnifyingGlass} />
       <input
         style={{ backgroundColor: themeState.elements, color: themeState.text }}
         className="searchbar"

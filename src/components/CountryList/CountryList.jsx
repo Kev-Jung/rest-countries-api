@@ -4,16 +4,16 @@ import { CountryContext } from "../../contexts/CountryContext";
 import Card from "../Card/Card";
 
 const CountryList = ({ themeState }) => {
-  const { countries, setCountries } = useContext(CountryContext);
+  const { setCountries, filteredCountries } = useContext(CountryContext);
   const [isLoading, setIsLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState("Loading Countries...");
 
+  // fetches all country data and paints on UI onload
   useEffect(() => {
     const fetchCountries = async () => {
       setIsLoading(true);
-      const baseURL = "https://restcountries.com/v3.1/all";
       try {
-        const response = await fetch(baseURL);
+        const response = await fetch("https://restcountries.com/v3.1/all");
         const countryData = await response.json();
         setCountries(countryData);
         setIsLoading(false);
@@ -26,6 +26,7 @@ const CountryList = ({ themeState }) => {
 
   return (
     <div className="country-list-container">
+      {/* displays loading message while fetching API */}
       {isLoading ? (
         <div className="loading-container">
           <h1 style={{ color: themeState.text }} className="loading-text">
@@ -33,7 +34,7 @@ const CountryList = ({ themeState }) => {
           </h1>
         </div>
       ) : (
-        countries.map((country) => {
+        filteredCountries.map((country) => {
           return (
             <Card
               themeState={themeState}
