@@ -5,7 +5,7 @@ import { useContext, useEffect, useState } from "react";
 import { APIContext } from "../../contexts/APIContext";
 
 const Filter = ({ themeState, placeholder, menuItems }) => {
-  const { setFilteredCountries } = useContext(APIContext);
+  const { fetchByCountryName } = useContext(APIContext);
   const [menuItem, setMenuItem] = useState(placeholder);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
@@ -18,18 +18,9 @@ const Filter = ({ themeState, placeholder, menuItems }) => {
     setIsMenuOpen(!isMenuOpen);
   };
 
-  const fetchByCountryName = async () => {
-    const response = await fetch(
-      `https://restcountries.com/v3.1/region/${menuItem}`
-    );
-    const countryData = await response.json();
-    setFilteredCountries(countryData);
-    setMenuItem(placeholder);
-  };
-
   useEffect(() => {
     if (menuItem !== placeholder) {
-      fetchByCountryName();
+      fetchByCountryName(placeholder, menuItem, setMenuItem);
     }
   }, [menuItem]);
 

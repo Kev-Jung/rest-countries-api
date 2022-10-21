@@ -12,7 +12,7 @@ function App() {
   const themeState = theme ? dark : light;
 
   return (
-    <div className='App' style={{backgroundColor: themeState.bg}}>
+    <div style={{backgroundColor: themeState.bg}}>
       <Routes>
         <Route path="/" element={<Header themeState={themeState} />} >
           <Route index element={<MainPage themeState={themeState}/>}/>

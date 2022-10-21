@@ -17,12 +17,15 @@ export const APIContextProvider = ({ children }) => {
     message: "Loading Countries...",
   });
 
+  // fetches all country data on app load and sets data to both countries and filteredCountries state.
+  // "countries" state will remain unchanged, but filteredCountries will always to changing based on searchbar input
   useEffect(() => {
     const fetchCountries = async () => {
       try {
         const response = await fetch("https://restcountries.com/v3.1/all");
         const countryData = await response.json();
         setCountries(countryData);
+        setFilteredCountries(countryData);
         setIsLoading({ ...isLoading, loadState: false });
       } catch {
         setIsLoading({ ...isLoading, message: "Unable to fetch countries." });
@@ -31,16 +34,20 @@ export const APIContextProvider = ({ children }) => {
     fetchCountries();
   }, []);
 
-  // fetches API data onload (from CountryList component) and updates both countries and filteredCountries.
-  // Because filteredCountries is what's used to filter based on searchbar text.
-  useEffect(() => {
-    setFilteredCountries(countries);
-  }, [countries]);
+  const fetchByCountryName = async (placeholder, menuItem, setMenuItem) => {
+    const response = await fetch(
+      `https://restcountries.com/v3.1/region/${menuItem}`
+    );
+    const countryData = await response.json();
+    setFilteredCountries(countryData);
+    setMenuItem(placeholder);
+  };
 
   const value = {
     countries,
     filteredCountries,
     isLoading,
+    fetchByCountryName,
     setCountries: (data) => setCountries(data),
     setFilteredCountries: (data) => setFilteredCountries(data),
   };

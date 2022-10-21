@@ -5,8 +5,7 @@ import Card from "../Card/Card";
 import { Link } from "react-router-dom";
 
 const CountryList = ({ themeState }) => {
-  const { countries, setCountries, filteredCountries, isLoading } =
-    useContext(APIContext);
+  const { filteredCountries, isLoading } = useContext(APIContext);
 
   return (
     <div className="country-list-container">
@@ -18,8 +17,10 @@ const CountryList = ({ themeState }) => {
           </h1>
         </div>
       ) : (
+        // else maps over all the country data to display to UI.
         filteredCountries.map((country) => {
           return (
+            //state prop contains data to be parsed when routed to new URL (to be used by useLocation hook)
             <Link
               key={country.cca3}
               to={`/${country.name.common.replace(/\s/g, "")}`}

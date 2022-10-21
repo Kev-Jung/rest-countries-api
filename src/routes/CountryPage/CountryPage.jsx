@@ -7,6 +7,7 @@ import Button from "../../components/Button/Button";
 import { useContext } from "react";
 import { APIContext } from "../../contexts/APIContext";
 
+// recursively get the first key item in a nested object
 const ObjectFirstKeyRecursion = (object) => {
   if (typeof object === "string") {
     return object;
@@ -26,6 +27,7 @@ const findCountryWithCode = (code, countries) => {
 const CountryPage = ({ themeState }) => {
   const { countries } = useContext(APIContext);
 
+  // retrieve data passed from the CountryList and from *this* component (recursive routing)
   const location = useLocation();
   const { country } = location.state;
 
