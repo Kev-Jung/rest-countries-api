@@ -1,7 +1,7 @@
 .header-container {
   display: flex;
   justify-content: space-between;
-  padding: 30px 16px;
+  padding: 30px var(--mobile-inline);
   margin-bottom: 3px;
 
   @media (min-width: 768px) {

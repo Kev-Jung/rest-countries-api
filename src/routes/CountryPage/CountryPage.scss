@@ -4,19 +4,26 @@
 }
 
 .country-page-container {
-  min-height: 100vh;
-  padding: 40px 28px;
+  padding: 40px var(--mobile-inline);
+  position: absolute;
+  top: 84px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: -1;
+
+  @media (min-width: 768px) {
+    padding-inline: var(--desktop-inline);
+  }
 
   .facts-container {
-    margin-top: 70px;
+    margin: 50px auto;
     max-width: 500px;
-    margin-inline: auto;
 
     @media (min-width: 1024px) {
       display: grid;
       grid-template-columns: 1fr 1fr;
       align-items: center;
-      margin-inline: auto;
       gap: 80px;
       max-width: 1200px;
     }
@@ -64,7 +71,6 @@
     }
   }
 }
-
 
 .arrow {
   font-size: 16px;

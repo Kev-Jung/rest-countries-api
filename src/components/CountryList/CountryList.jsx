@@ -7,24 +7,6 @@ import { Link } from "react-router-dom";
 const CountryList = ({ themeState }) => {
   const { countries, setCountries, filteredCountries, isLoading } =
     useContext(APIContext);
-  // const [isLoading, setIsLoading] = useState(true);
-  // const [errorMessage, setErrorMessage] = useState("Loading Countries...");
-
-  // fetches all country data and paints on UI onload
-
-  // useEffect(() => {
-  //   const fetchCountries = async () => {
-  //     try {
-  //       const response = await fetch("https://restcountries.com/v3.1/all");
-  //       const countryData = await response.json();
-  //       setCountries(countryData);
-  //       setIsLoading(false);
-  //     } catch {
-  //       setErrorMessage("Unable to fetch countries.");
-  //     }
-  //   };
-  //   fetchCountries();
-  // }, []);
 
   return (
     <div className="country-list-container">

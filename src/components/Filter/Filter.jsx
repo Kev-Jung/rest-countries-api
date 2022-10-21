@@ -37,6 +37,7 @@ const Filter = ({ themeState, placeholder, menuItems }) => {
     <div className="dropdown-menu-container">
       <div
         className="dropdown-menu-filter"
+        onClick={handleToggleMenu}
         style={{
           backgroundColor: themeState.elements,
           color: themeState.text,
@@ -45,7 +46,6 @@ const Filter = ({ themeState, placeholder, menuItems }) => {
       >
         <span>{menuItem}</span>
         <FontAwesomeIcon
-          onClick={handleToggleMenu}
           className={`arrow ${isMenuOpen ? "toggle-arrow" : ""}`}
           icon={faCaretDown}
         />

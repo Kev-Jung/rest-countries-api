@@ -17,8 +17,6 @@ export const APIContextProvider = ({ children }) => {
     message: "Loading Countries...",
   });
 
-  // console.log(countries);
-
   useEffect(() => {
     const fetchCountries = async () => {
       try {

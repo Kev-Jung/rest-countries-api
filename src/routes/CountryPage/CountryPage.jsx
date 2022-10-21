@@ -16,20 +16,19 @@ const ObjectFirstKeyRecursion = (object) => {
   return ObjectFirstKeyRecursion(object);
 };
 
-const countryCodeToName = (code, countries) => {
+const findCountryWithCode = (code, countries) => {
   if (code && countries.length > 0) {
-    const matchedCountry = countries.filter(
-      (country) => country.cca3 == code
-    )[0].name.common;
-    return matchedCountry;
+    const matchedCountry = countries.filter((country) => country.cca3 == code);
+    return matchedCountry[0];
   }
 };
 
 const CountryPage = ({ themeState }) => {
   const { countries } = useContext(APIContext);
-  console.log(countries);
+
   const location = useLocation();
   const { country } = location.state;
+
   const {
     borders,
     capital,
@@ -55,7 +54,7 @@ const CountryPage = ({ themeState }) => {
         </Button>
       </Link>
       <div className="facts-container">
-        <img src={flags.png} />
+        <img src={flags.svg} />
         <div className="text-container">
           <h2>{name.common}</h2>
           <div className="data-fields-container">
@@ -70,7 +69,7 @@ const CountryPage = ({ themeState }) => {
               />
               <DataField title="Region" data={region} />
               <DataField title="Sub Region" data={subregion} />
-              <DataField title="Capital" data={capital} />
+              {capital && <DataField title="Capital" data={capital[0]} />}
             </div>
             <div className="field">
               <DataField title="Top Level Domain" data={tld[0]} />
@@ -90,12 +89,20 @@ const CountryPage = ({ themeState }) => {
                 <DataField title="Border Countries" />
                 <div className="btn-group">
                   {borders.map((countryCode) => {
+                    const matchedCountry = findCountryWithCode(
+                      countryCode,
+                      countries
+                    );
+                    const matchedCountryName = matchedCountry.name.common;
+
                     return (
-                      // <Link to="">
-                      <Button key={countryCode}>
-                        {countryCodeToName(countryCode, countries)}
-                      </Button>
-                      // {/* </Link> */}
+                      <Link
+                        key={countryCode}
+                        to={`/${matchedCountryName.replace(/\s/g, "")}`}
+                        state={{ country: matchedCountry }}
+                      >
+                        <Button>{matchedCountryName}</Button>
+                      </Link>
                     );
                   })}
                 </div>
