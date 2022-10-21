@@ -1,18 +1,15 @@
 .country-list-container {
   display: flex;
   flex-direction: column;
+  flex-wrap: wrap;
   justify-content: center;
-  gap: 60px;
+  gap: 50px;
   padding-bottom: 60px;
+  margin-inline: var(--mobile-inline);
 
-  @media (min-width: 768px) {
-    flex-direction: row;
-    flex-wrap: wrap;
-  }
-
-  @media (min-width: 1024px) {
+  @media (min-width: 600px) {
     margin-inline: var(--desktop-inline);
-
+    flex-direction: row;
   }
 
   .loading-container {

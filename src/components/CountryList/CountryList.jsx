@@ -1,38 +1,38 @@
 import "./CountryList.scss";
 import { useEffect, useState, useContext } from "react";
-import { CountryContext } from "../../contexts/CountryContext";
+import { APIContext } from "../../contexts/APIContext";
 import Card from "../Card/Card";
 import { Link } from "react-router-dom";
 
 const CountryList = ({ themeState }) => {
-  const { countries, setCountries, filteredCountries } =
-    useContext(CountryContext);
-  const [isLoading, setIsLoading] = useState(true);
-  const [errorMessage, setErrorMessage] = useState("Loading Countries...");
+  const { countries, setCountries, filteredCountries, isLoading } =
+    useContext(APIContext);
+  // const [isLoading, setIsLoading] = useState(true);
+  // const [errorMessage, setErrorMessage] = useState("Loading Countries...");
 
   // fetches all country data and paints on UI onload
 
-  useEffect(() => {
-    const fetchCountries = async () => {
-      try {
-        const response = await fetch("https://restcountries.com/v3.1/all");
-        const countryData = await response.json();
-        setCountries(countryData);
-        setIsLoading(false);
-      } catch {
-        setErrorMessage("Unable to fetch countries.");
-      }
-    };
-    fetchCountries();
-  }, []);
+  // useEffect(() => {
+  //   const fetchCountries = async () => {
+  //     try {
+  //       const response = await fetch("https://restcountries.com/v3.1/all");
+  //       const countryData = await response.json();
+  //       setCountries(countryData);
+  //       setIsLoading(false);
+  //     } catch {
+  //       setErrorMessage("Unable to fetch countries.");
+  //     }
+  //   };
+  //   fetchCountries();
+  // }, []);
 
   return (
     <div className="country-list-container">
       {/* displays loading message while fetching API */}
-      {isLoading ? (
+      {isLoading.loadState ? (
         <div className="loading-container">
           <h1 style={{ color: themeState.text }} className="loading-text">
-            {errorMessage}
+            {isLoading.message}
           </h1>
         </div>
       ) : (

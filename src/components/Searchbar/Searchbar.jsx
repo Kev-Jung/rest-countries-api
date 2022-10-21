@@ -1,11 +1,11 @@
 import "./Searchbar.scss";
 import { useEffect, useState, useContext } from "react";
-import { CountryContext } from "../../contexts/CountryContext";
+import { APIContext } from "../../contexts/APIContext";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 
 const Searchbar = ({ placeholder, themeState }) => {
-  const { countries, setFilteredCountries } = useContext(CountryContext);
+  const { countries, setFilteredCountries } = useContext(APIContext);
   const [inputField, setInputField] = useState("");
 
   useEffect(() => {

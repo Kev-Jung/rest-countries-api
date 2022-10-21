@@ -2,10 +2,10 @@ import "./Filter.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCaretDown } from "@fortawesome/free-solid-svg-icons";
 import { useContext, useEffect, useState } from "react";
-import { CountryContext } from "../../contexts/CountryContext";
+import { APIContext } from "../../contexts/APIContext";
 
 const Filter = ({ themeState, placeholder, menuItems }) => {
-  const { setFilteredCountries } = useContext(CountryContext);
+  const { setFilteredCountries } = useContext(APIContext);
   const [menuItem, setMenuItem] = useState(placeholder);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 

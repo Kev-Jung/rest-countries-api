@@ -5,7 +5,7 @@ import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 import DataField from "../../components/DataField/DataField";
 import Button from "../../components/Button/Button";
 import { useContext } from "react";
-import { CountryContext } from "../../contexts/CountryContext";
+import { APIContext } from "../../contexts/APIContext";
 
 const ObjectFirstKeyRecursion = (object) => {
   if (typeof object === "string") {
@@ -16,17 +16,18 @@ const ObjectFirstKeyRecursion = (object) => {
   return ObjectFirstKeyRecursion(object);
 };
 
-// const countryCodeToName = (code, countries) => {
-//   countries.filter((country) => {
-//     if (country.cca3 == code) {
-//       console.log(country.name.common);
-//       return country.name.common;
-//     }
-//   });
-// };
+const countryCodeToName = (code, countries) => {
+  if (code && countries.length > 0) {
+    const matchedCountry = countries.filter(
+      (country) => country.cca3 == code
+    )[0].name.common;
+    return matchedCountry;
+  }
+};
 
 const CountryPage = ({ themeState }) => {
-  // const { countries } = useContext(CountryContext);
+  const { countries } = useContext(APIContext);
+  console.log(countries);
   const location = useLocation();
   const { country } = location.state;
   const {
@@ -89,7 +90,13 @@ const CountryPage = ({ themeState }) => {
                 <DataField title="Border Countries" />
                 <div className="btn-group">
                   {borders.map((countryCode) => {
-                    return <Button>{countryCode}</Button>;
+                    return (
+                      // <Link to="">
+                      <Button key={countryCode}>
+                        {countryCodeToName(countryCode, countries)}
+                      </Button>
+                      // {/* </Link> */}
+                    );
                   })}
                 </div>
               </>
