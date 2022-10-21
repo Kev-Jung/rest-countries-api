@@ -1,10 +1,10 @@
 import './App.scss';
-import Header from './components/Header/Header';
 import { useContext } from "react";
-import { ThemeContext } from './contexts/ThemeContext';
-import Query from './components/Query/Query';
-import CountryList from './components/CountryList/CountryList';
-
+import { ThemeContext } from "./contexts/ThemeContext";
+import { Routes, Route } from 'react-router-dom';
+import MainPage from './routes/MainPage/MainPage';
+import Header from './components/Header/Header';
+import CountryPage from "./routes/CountryPage/CountryPage"
 
 function App() {
 
@@ -12,13 +12,13 @@ function App() {
   const themeState = theme ? dark : light;
 
   return (
-    <div 
-      className="App" 
-      style={{backgroundColor: themeState.bg}}
-    >
-      <Header themeState={themeState}/>
-      <Query themeState={themeState} />
-      <CountryList themeState={themeState} />
+    <div className='App' style={{backgroundColor: themeState.bg}}>
+      <Routes>
+        <Route path="/" element={<Header themeState={themeState} />} >
+          <Route index element={<MainPage themeState={themeState}/>}/>
+          <Route path=":country" element={<CountryPage themeState={themeState}/>}/>
+        </Route>
+      </Routes>
     </div>
   );
 }

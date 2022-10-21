@@ -1,6 +1,6 @@
-import "./CardData.scss";
+import "./DataField.scss";
 
-const CardData = ({ title, data }) => {
+const DataField = ({ title, data }) => {
   return (
     <div className="card-data-container">
       <span className="title">{`${title}: `}</span>
@@ -9,4 +9,4 @@ const CardData = ({ title, data }) => {
   );
 };
 
-export default CardData;
+export default DataField;

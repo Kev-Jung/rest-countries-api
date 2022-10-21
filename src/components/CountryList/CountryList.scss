@@ -1,6 +1,7 @@
 .country-list-container {
   display: flex;
   flex-direction: column;
+  justify-content: center;
   gap: 60px;
   padding-bottom: 60px;
 
@@ -11,6 +12,7 @@
 
   @media (min-width: 1024px) {
     margin-inline: var(--desktop-inline);
+
   }
 
   .loading-container {

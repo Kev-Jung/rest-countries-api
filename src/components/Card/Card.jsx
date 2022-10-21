@@ -1,20 +1,8 @@
-import CardData from "../CardData/CardData";
+import DataField from "../DataField/DataField";
 import "./Card.scss";
 
 const Card = ({ themeState, countryData }) => {
-  const {
-    borders,
-    capital,
-    cioc,
-    currencies,
-    flags,
-    languages,
-    name,
-    population,
-    region,
-    subregion,
-    tld,
-  } = countryData;
+  const { capital, flags, name, population, region } = countryData;
 
   return (
     <div
@@ -28,9 +16,9 @@ const Card = ({ themeState, countryData }) => {
       <img className="card-img" src={flags.png} alt="country-flag" />
       <div className="card-description">
         <h3>{name.common}</h3>
-        <CardData title="Population" data={population.toLocaleString()} />
-        <CardData title="Region" data={region} />
-        <CardData title="Capital" data={capital} />
+        <DataField title="Population" data={population.toLocaleString()} />
+        <DataField title="Region" data={region} />
+        <DataField title="Capital" data={capital} />
       </div>
     </div>
   );

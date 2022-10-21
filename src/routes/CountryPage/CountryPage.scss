@@ -1,0 +1,78 @@
+@mixin flex($direction) {
+  display: flex;
+  flex-direction: $direction;
+}
+
+.country-page-container {
+  min-height: 100vh;
+  // padding: 40px var(--mobile-inline);
+  padding: 40px 28px;
+
+  .facts-container {
+    border: 1px solid red;
+    margin-top: 70px;
+    max-width: 1200px;
+
+    @media (min-width: 700px) {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      align-items: center;
+      margin-inline: auto;
+    }
+
+    @media (min-width: 1024px) {
+      gap: 80px;
+    }
+
+    img {
+      width: 100%;
+    }
+
+    .text-container {
+
+      h2 {
+        font-size: 30px;
+      }
+
+      .data-fields-container {
+        @include flex(column);
+        gap: 40px;
+        margin-bottom: 50px;
+
+        @media (min-width: 700px) {
+          flex-direction: row;
+          // gap: 60px;
+        }
+
+        @media (min-width: 1024px) {
+          gap: 80px;
+        }
+
+        .field {
+          @include flex(column);
+          gap: 16px;
+          letter-spacing: 0.5px;
+        }
+      }
+
+      .border-countries-container {
+        border: 1px solid blue;
+        @include flex(column);
+        gap: 20px;
+
+        .btn-group {
+          @include flex(row);
+          flex-wrap: wrap;
+          gap: 10px;
+        }
+      }
+    }
+  }
+}
+
+
+.arrow {
+  font-size: 16px;
+  margin-right: 10px;
+}

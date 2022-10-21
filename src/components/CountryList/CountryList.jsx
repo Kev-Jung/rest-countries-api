@@ -2,16 +2,18 @@ import "./CountryList.scss";
 import { useEffect, useState, useContext } from "react";
 import { CountryContext } from "../../contexts/CountryContext";
 import Card from "../Card/Card";
+import { Link } from "react-router-dom";
 
 const CountryList = ({ themeState }) => {
-  const { setCountries, filteredCountries } = useContext(CountryContext);
-  const [isLoading, setIsLoading] = useState(false);
+  const { countries, setCountries, filteredCountries } =
+    useContext(CountryContext);
+  const [isLoading, setIsLoading] = useState(true);
   const [errorMessage, setErrorMessage] = useState("Loading Countries...");
 
   // fetches all country data and paints on UI onload
+
   useEffect(() => {
     const fetchCountries = async () => {
-      setIsLoading(true);
       try {
         const response = await fetch("https://restcountries.com/v3.1/all");
         const countryData = await response.json();
@@ -36,11 +38,13 @@ const CountryList = ({ themeState }) => {
       ) : (
         filteredCountries.map((country) => {
           return (
-            <Card
-              themeState={themeState}
+            <Link
               key={country.cca3}
-              countryData={country}
-            />
+              to={`/${country.name.common.replace(/\s/g, "")}`}
+              state={{ country }}
+            >
+              <Card themeState={themeState} countryData={country} />
+            </Link>
           );
         })
       )}

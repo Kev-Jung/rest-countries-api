@@ -12,6 +12,8 @@ export const CountryContextProvider = ({ children }) => {
   // state for managing filtering from search bar
   const [filteredCountries, setFilteredCountries] = useState([]);
 
+  console.log(countries);
+
   // fetches API data onload (from CountryList component) and updates both countries and filteredCountries.
   // Because filteredCountries is what's used to filter based on searchbar text.
   useEffect(() => {
