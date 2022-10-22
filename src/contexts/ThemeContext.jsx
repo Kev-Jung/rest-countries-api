@@ -6,10 +6,19 @@ export const ThemeContext = createContext({
 });
 
 export const ThemeContextProvider = ({ children }) => {
-  const [theme, setTheme] = useState(false);
+  // Checks local storage for theme state, will persist dark/light mode upon browser refresh
+  if (localStorage.getItem("darkMode") === null) {
+    localStorage.setItem("darkMode", "false");
+  }
 
+  const [theme, setTheme] = useState(() =>
+    JSON.parse(localStorage.getItem("darkMode"))
+  );
+
+  console.log(theme);
   const toggleTheme = () => {
     setTheme(!theme);
+    localStorage.setItem("darkMode", JSON.stringify(!theme));
   };
 
   const themeStyles = {

@@ -1,12 +1,11 @@
 import "./CountryList.scss";
-import { useEffect, useState, useContext } from "react";
+import { useContext } from "react";
 import { APIContext } from "../../contexts/APIContext";
 import Card from "../Card/Card";
 import { Link } from "react-router-dom";
 
 const CountryList = ({ themeState }) => {
   const { filteredCountries, isLoading } = useContext(APIContext);
-
   return (
     <div className="country-list-container">
       {/* displays loading message while fetching API */}
@@ -24,7 +23,7 @@ const CountryList = ({ themeState }) => {
             <Link
               key={country.cca3}
               to={`/${country.name.common.replace(/\s/g, "")}`}
-              state={{ country }}
+              state={country}
             >
               <Card themeState={themeState} countryData={country} />
             </Link>

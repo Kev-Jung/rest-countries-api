@@ -8,8 +8,6 @@ This is my solution to the [Country Theme Switcher and REST Filter Challenge](ht
 
 ## The Challenge
 
-Your challenge is to integrate with the [REST Countries API](https://restcountries.com) to pull country data and display it like in the designs.
-
 Users should be able to:
 
 - See all countries from the API on the homepage
@@ -18,6 +16,7 @@ Users should be able to:
 - Click on a country to see more detailed information on a separate page
 - Click through to the border countries on the detail page
 - Toggle the color scheme between light and dark mode
+- Additional Feature: persist website dark/light theme in local storage
 
 ## Built With
 
@@ -26,6 +25,6 @@ Users should be able to:
 - ES6 Javascript
 - Mobile-first workflow
 - Fontawesome
-- React - functional components
+- React
 - react-router-dom-6.4.2
-  [REST Countries API](https://restcountries.com)
+- [REST Countries API](https://restcountries.com)

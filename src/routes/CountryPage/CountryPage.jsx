@@ -19,7 +19,7 @@ const ObjectFirstKeyRecursion = (object) => {
 
 const findCountryWithCode = (code, countries) => {
   if (code && countries.length > 0) {
-    const matchedCountry = countries.filter((country) => country.cca3 == code);
+    const matchedCountry = countries.filter((country) => country.cca3 === code);
     return matchedCountry[0];
   }
 };
@@ -29,8 +29,6 @@ const CountryPage = ({ themeState }) => {
 
   // retrieve data passed from the CountryList and from *this* component (recursive routing)
   const location = useLocation();
-  const { country } = location.state;
-
   const {
     borders,
     capital,
@@ -42,7 +40,7 @@ const CountryPage = ({ themeState }) => {
     region,
     subregion,
     tld,
-  } = country;
+  } = location.state;
 
   return (
     <div
@@ -56,7 +54,7 @@ const CountryPage = ({ themeState }) => {
         </Button>
       </Link>
       <div className="facts-container">
-        <img src={flags.svg} />
+        <img src={flags.svg} alt="country-flag" />
         <div className="text-container">
           <h2>{name.common}</h2>
           <div className="data-fields-container">
