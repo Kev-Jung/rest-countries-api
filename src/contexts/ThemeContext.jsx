@@ -15,7 +15,6 @@ export const ThemeContextProvider = ({ children }) => {
     JSON.parse(localStorage.getItem("darkMode"))
   );
 
-  console.log(theme);
   const toggleTheme = () => {
     setTheme(!theme);
     localStorage.setItem("darkMode", JSON.stringify(!theme));

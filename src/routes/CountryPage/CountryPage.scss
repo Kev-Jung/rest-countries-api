@@ -5,15 +5,18 @@
 
 .country-page-container {
   padding: 40px var(--mobile-inline);
-  position: absolute;
-  top: 83px;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  z-index: -1;
 
   @media (min-width: 768px) {
     padding-inline: var(--desktop-inline);
+  }
+
+  @media (min-width: 1024px) {
+    position: absolute;
+    top: 83px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
   }
 
   .facts-container {
@@ -26,7 +29,7 @@
       align-items: center;
       gap: 80px;
       max-width: 1200px;
-      transform: translateY(30%)
+      transform: translateY(30px);
     }
 
     img {

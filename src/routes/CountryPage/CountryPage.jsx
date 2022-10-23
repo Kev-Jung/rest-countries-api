@@ -99,7 +99,7 @@ const CountryPage = ({ themeState }) => {
                       <Link
                         key={countryCode}
                         to={`/${matchedCountryName.replace(/\s/g, "")}`}
-                        state={{ country: matchedCountry }}
+                        state={matchedCountry}
                       >
                         <Button>{matchedCountryName}</Button>
                       </Link>

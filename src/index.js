@@ -10,7 +10,7 @@ root.render(
   <React.StrictMode>
     <ThemeContextProvider>
       <APIContextProvider>
-        <BrowserRouter>
+        <BrowserRouter basename='/rest-countries-api'>
           <App /> 
         </BrowserRouter>
       </APIContextProvider>
