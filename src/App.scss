@@ -1,7 +1,12 @@
 :root {
   --font: 'Nunito Sans', sans-serif;
   --mobile-inline: 30px;
-  --desktop-inline: 60px;
+  --desktop-inline: 70px;
+  --max-width: 1450px;
+}
+
+.App {
+  min-height: 100vh;
 }
 
 body {

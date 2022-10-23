@@ -4,7 +4,7 @@ import CountryList from "../../components/CountryList/CountryList";
 
 const MainPage = ({ themeState }) => {
   return (
-    <div className="main" style={{ backgroundColor: themeState.bg }}>
+    <div className="main">
       <Query themeState={themeState} />
       <CountryList themeState={themeState} />
     </div>

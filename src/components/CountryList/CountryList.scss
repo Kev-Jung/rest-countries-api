@@ -5,11 +5,17 @@
   justify-content: center;
   gap: 50px;
   padding-bottom: 60px;
-  margin-inline: var(--mobile-inline);
+  padding-inline: var(--mobile-inline);
+  max-width: var(--max-width);
 
   @media (min-width: 600px) {
-    margin-inline: var(--desktop-inline);
+    padding-inline: var(--desktop-inline);
     flex-direction: row;
+  }
+
+  @media (min-width: 1024px) {
+    margin: auto;
+    // justify-content: space-between;
   }
 
   .loading-container {

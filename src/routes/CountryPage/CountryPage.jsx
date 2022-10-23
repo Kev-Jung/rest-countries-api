@@ -44,15 +44,17 @@ const CountryPage = ({ themeState }) => {
 
   return (
     <div
-      style={{ backgroundColor: themeState.bg, color: themeState.text }}
+      // style={{ backgroundColor: themeState.bg, color: themeState.text }}
       className="country-page-container"
     >
-      <Link to="/">
-        <Button>
-          <FontAwesomeIcon icon={faArrowLeft} className="arrow" />
-          Back
-        </Button>
-      </Link>
+      <div className="back-btn">
+        <Link to="/">
+          <Button>
+            <FontAwesomeIcon icon={faArrowLeft} className="arrow" />
+            Back
+          </Button>
+        </Link>
+      </div>
       <div className="facts-container">
         <img src={flags.svg} alt="country-flag" />
         <div className="text-container">

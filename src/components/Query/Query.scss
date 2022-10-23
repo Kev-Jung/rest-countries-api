@@ -1,13 +1,15 @@
 .query-container {
-  margin-inline: var(--mobile-inline);
+  padding-inline: var(--mobile-inline);
   margin-bottom: 160px;
   position: relative;
+  max-width: var(--max-width);
 
   @media (min-width: 600px) {
-    margin-inline: var(--desktop-inline);
+    padding-inline: var(--desktop-inline);
   }
 
   @media (min-width: 1024px) {
     margin-bottom: 50px;
+    margin-inline: auto;
   }
 }

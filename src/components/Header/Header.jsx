@@ -10,29 +10,30 @@ const Header = ({ themeState }) => {
   const { theme, toggleTheme } = useContext(ThemeContext);
 
   return (
-    <div>
+    <>
       <header
         style={{
           backgroundColor: themeState.elements,
-          color: themeState.text,
           boxShadow: themeState.shadow,
         }}
         className="header-container"
       >
-        <Link
-          to="/"
-          className="header-title"
-          style={{ color: themeState.text }}
-        >
-          Where in the world?
-        </Link>
-        <div className="dark-mode-container" onClick={toggleTheme}>
-          <FontAwesomeIcon icon={faMoon} />
-          <span>{theme ? "Light Mode" : "Dark Mode"}</span>
+        <div className="header-text">
+          <Link
+            to="/"
+            className="header-title"
+            style={{ color: themeState.text }}
+          >
+            Where in the world?
+          </Link>
+          <div className="dark-mode-container" onClick={toggleTheme}>
+            <FontAwesomeIcon icon={faMoon} />
+            <span>{theme ? "Light Mode" : "Dark Mode"}</span>
+          </div>
         </div>
       </header>
       <Outlet />
-    </div>
+    </>
   );
 };
 

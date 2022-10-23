@@ -4,7 +4,7 @@
   position: absolute;
 
   @media (min-width:1024px) {
-    right: 0;
+    right: var(--desktop-inline);
     top: 0;
   }
 
